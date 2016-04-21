@@ -5,6 +5,15 @@ angular.module('roadtrippin.maps', ['gservice'])
     $scope.route.stopTypes = ['liquor_store', 'restaurants', 'lodging']
     $scope.places = [];
     $scope.savedRoutes = [];
+    $scope.user = {};
+
+    var readCredentials = function () {
+      mapFactory.getUserInfo()
+        .then(function (userInfo) {
+          $scope.user = userInfo;
+        });
+    };
+    readCredentials();
 
     var startAutoComplete = new google.maps.places.Autocomplete(
       document.getElementById('start'), {

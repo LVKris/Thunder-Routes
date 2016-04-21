@@ -27,6 +27,10 @@ app.post('/saveJourney', journeyController.saveJourney);
 app.get('/saveJourney', journeyController.getAll);
 app.post('/signin', userController.signin);
 app.post('/signup', userController.signup);
+
+// Returns username
+app.get('/api/user', userController.checkAuth);
+
 app.use(userController.errorHandler);
 
 

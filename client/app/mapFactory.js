@@ -30,6 +30,19 @@ angular.module('roadtrippin.mapsFactory', [])
       return deferred.promise;
     };
 
+    var getUserInfo = function() {
+      var deferred = $q.defer();
+      $http({
+        method: 'GET',
+        url: '/api/user'
+      }).then(function (res) {
+        deferred.resolve(res.data);
+      }).catch(function (err) {
+        deferred.reject(err);
+      });
+      return deferred.promise;
+    };
+
     var signout = function() {
       $window.localStorage.removeItem('com.roadtrippin');
       $location.path('/signin');
@@ -38,6 +51,7 @@ angular.module('roadtrippin.mapsFactory', [])
     return {
       saveJourneyWithWaypoints: saveJourneyWithWaypoints,
       getAllRoutes: getAllRoutes,
-      signout: signout
+      signout: signout,
+      getUserInfo: getUserInfo
     };
   });
