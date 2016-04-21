@@ -2,6 +2,7 @@ angular.module('roadtrippin.maps', ['gservice'])
   .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll) {
     $scope.route = {};
     $scope.route.stopOptions = [1, 2, 3, 4, 5];
+    $scope.route.stopTypes = ['liquor_store', 'restaurants', 'lodging']
     $scope.places = [];
     $scope.savedRoutes = [];
 
@@ -13,8 +14,8 @@ angular.module('roadtrippin.maps', ['gservice'])
     startAutoComplete.addListener('place_changed', function() {
       $scope.route.start = startAutoComplete.getPlace().formatted_address;
         var place = startAutoComplete.getPlace();
-        console.log('place', place);   
-        console.log($scope.route.start); 
+        // console.log('place', place);   
+        // console.log($scope.route.start); 
     });
 
     var endAutoComplete = new google.maps.places.Autocomplete(
@@ -29,7 +30,8 @@ angular.module('roadtrippin.maps', ['gservice'])
 
     //this is a call to our Google maps API factory for directions
     $scope.getRoute = function() {
-      gservice.calcRoute($scope.route.start, $scope.route.end, $scope.route.numStops)
+      console.log($scope.route)
+      gservice.calcRoute($scope.route.start, $scope.route.end, $scope.route.numStops, $scope.route.typeStops)
         .then(function(places) { splitLocations(places); });
         $scope.startInput = '';
         $scope.endInput = '';

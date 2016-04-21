@@ -24,6 +24,8 @@
       </select> -->
       <select class="form-control selectpicker" ng-model ="route.numStops" ng-options="n for n in route.stopOptions">
       </select>
+      <select class="form-control selectpicker2" ng-model ="route.typeStops" ng-options="n for n in route.stopTypes">
+      </select>
       <button id="search-btn" class="btn btn-default" ng-click="getRoute()">Get Stops
       </button>
     </div>
