@@ -9,6 +9,7 @@ var app = express();
 
 app.use(express.static(__dirname + '/../client'));
 app.use(parser.json());
+// Console logs all reqests to the server 
 app.use(morgan('dev'));
 
 
