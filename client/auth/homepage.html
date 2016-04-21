@@ -22,9 +22,11 @@
       <input id="end" type="text" class="form-control" placeholder="Enter end point" ng-model="endInput" />
       <!-- <select class="form-control" ng-model ="selectedOption" ng-options="n for n in route.stopOptions" >
       </select> -->
-      <select class="form-control selectpicker" ng-model ="route.numStops" ng-options="n for n in route.stopOptions">
+      <label for="stops">Number of stops: </label>
+      <select id="stops" class="form-control selectpicker" ng-init="route.numStops = route.stopOptions[0]"ng-model ="route.numStops" ng-options="n for n in route.stopOptions">
       </select>
-      <select class="form-control selectpicker2" ng-model ="route.typeStops" ng-options="n for n in route.stopTypes">
+      <label for="stops">Type of stops: </label>
+      <select id="stopType" class="form-control selectpicker" ng-init="route.typeStops = route.stopTypes[0]" ng-model ="route.typeStops" ng-options="n for n in route.stopTypes">
       </select>
       <button id="search-btn" class="btn btn-default" ng-click="getRoute()">Get Stops
       </button>
