@@ -31,6 +31,9 @@ app.post('/signup', userController.signup);
 // Returns username
 app.get('/api/user', userController.checkAuth);
 
+// Returns single journey
+app.post('/api/route', journeyController.getOne);
+
 app.use(userController.errorHandler);
 
 

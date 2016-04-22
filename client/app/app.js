@@ -4,6 +4,7 @@ angular.module('roadtrippin', [
   'gservice',
   'roadtrippin.auth',
   'roadtrippin.authFactory',
+  'shareroute',
   'ui.router'
 ])
 
@@ -26,6 +27,11 @@ angular.module('roadtrippin', [
       templateUrl: './../auth/homepage.html',
       controller: 'mapController',
       authenticate: true
+    })
+    .state('share', {
+      url: '/share/:routeid',
+      templateUrl: './../share/shareView.html',
+      controller: 'ShareController' 
     });
 
   $httpProvider.interceptors.push('AttachTokens');

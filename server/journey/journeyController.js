@@ -44,5 +44,15 @@ module.exports = {
       .catch(function(error) {
         next(error);
       });
+  },
+
+  getOne: function (req, res, next) {
+    Journey.find({hash: req.body.hash})
+      .then(function (data) {
+        res.status(200).send(data);
+      })
+      .catch(function(error) {
+        next(error);
+      });
   }
 };
