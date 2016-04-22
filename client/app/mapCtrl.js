@@ -2,7 +2,7 @@ angular.module('roadtrippin.maps', ['gservice'])
   .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll) {
     $scope.route = {};
     $scope.route.stopOptions = [1, 2, 3, 4, 5];
-    $scope.route.stopTypes = ['liquor_store', 'restaurants', 'lodging'];
+    $scope.route.stopTypes = ['liquor_store', 'restaurant', 'lodging'];
     $scope.places = [];
     $scope.savedRoutes = [];
     $scope.user = {};
