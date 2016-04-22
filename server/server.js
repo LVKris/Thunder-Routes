@@ -25,6 +25,7 @@ db.once('open', function() {
 
 app.post('/saveJourney', journeyController.saveJourney);
 app.get('/saveJourney', journeyController.getAll);
+app.get('/user', userController.checkAuth);
 app.post('/signin', userController.signin);
 app.post('/signup', userController.signup);
 

@@ -107,6 +107,10 @@ angular.module('roadtrippin.maps', ['gservice'])
         }
       }
     };
+    
+    $scope.deleteSavedRoute = function (hash) {
+       console.log(hash, 'delete this trip');
+    }
 
     $scope.getAll();
 

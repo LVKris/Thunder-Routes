@@ -40,13 +40,13 @@ npm install
 
 ### Roadmap
 
-View the project roadmap [here](https://github.com/ZeusCrew/ZeusCrew/issues)
+View the project roadmap [here](https://github.com/Hermes/Thunder-Routes/issues)
 
 ## Team
 
-  - __Product Owner__: Amanda Pattridge
-  - __Scrum Master__: Andrew Vedady
-  - __Development Team Members__: Hiroshi Matsuda, Sara Gee, Frances Swiecki 
+  - __Product Owner__: Daniel Ramich
+  - __Scrum Master__: Long Nguyen
+  - __Development Team Members__: Amando Nudo, Kris Stange
 
 ## Contributing
 

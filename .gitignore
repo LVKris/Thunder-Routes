@@ -1,6 +1,9 @@
 node_modules
 client/lib
 client/index.html
+
+config/config.js
+
 *.DS_Store
 
 .env

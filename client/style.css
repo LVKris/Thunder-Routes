@@ -175,6 +175,7 @@ h3 {
 
 .saved-route-link {
   float: right;
+  margin: 2px;
 }
 
 .dont-show {
