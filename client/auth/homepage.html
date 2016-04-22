@@ -59,6 +59,7 @@
   <h3 class="infoHeader"><i class="fa fa-caret-right fa-rotate-90" aria-hidden="true"></i>Saved Routes</h3>
   <div class="row info save-routes" ng-repeat="route in savedRoutes">
     <div class="col-xs-4">
+      <p class="route-author">Created by: {{ route.author }}</p>
       <p class="route-start">From: {{ route.startPoint }}</p>
       <p class="route-end">To: {{ route.endPoint }}</p>
     </div>

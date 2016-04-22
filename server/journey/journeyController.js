@@ -8,6 +8,7 @@ module.exports = {
   saveJourney: function (req, res, next) {
     var start = req.body.start;
     var end = req.body.end;
+    var author = req.body.author;
     var waypoints = [];
 
     for (var i = 0; i < req.body.waypoints.length; i++) {
@@ -23,7 +24,8 @@ module.exports = {
           return createJourney({
             startPoint: start,
             endPoint: end,
-            wayPoints: waypoints
+            wayPoints: waypoints,
+            author: author
           });
         } else {
           next(new Error('Journey already exist!'));
