@@ -2,7 +2,7 @@ angular.module('roadtrippin.maps', ['gservice'])
   .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll) {
     $scope.route = {};
     $scope.route.stopOptions = [1, 2, 3, 4, 5];
-    $scope.route.stopTypes = ['liquor_store', 'restaurants', 'lodging']
+    $scope.route.stopTypes = ['liquor_store', 'restaurants', 'lodging'];
     $scope.places = [];
     $scope.savedRoutes = [];
     $scope.user = {};
@@ -39,7 +39,6 @@ angular.module('roadtrippin.maps', ['gservice'])
 
     //this is a call to our Google maps API factory for directions
     $scope.getRoute = function() {
-      console.log($scope.route)
       gservice.calcRoute($scope.route.start, $scope.route.end, $scope.route.numStops, $scope.route.typeStops)
         .then(function(places) { splitLocations(places); });
         $scope.startInput = '';
@@ -65,7 +64,9 @@ angular.module('roadtrippin.maps', ['gservice'])
     };
 
     $scope.saveRoute = function () {
-      mapFactory.saveJourneyWithWaypoints(gservice.thisTrip).then($scope.getAll());
+      var authorAndTrip = gservice.thisTrip;
+      authorAndTrip.author = $scope.user.username;
+      mapFactory.saveJourneyWithWaypoints(authorAndTrip).then($scope.getAll());
     };
 
     $scope.getAll = function () {

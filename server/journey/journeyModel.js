@@ -14,6 +14,9 @@ var JourneySchema = new mongoose.Schema({
   },
   hash: {
     type: String
+  },
+  author: {
+    type: String
   }
 });
 
