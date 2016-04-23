@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/ZeusCrew/ZeusCrew#readme",
   "dependencies": {
+    "angularjs-toaster": "^2.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "crypto": "0.0.3",

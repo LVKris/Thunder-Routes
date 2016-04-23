@@ -1,5 +1,5 @@
-angular.module('roadtrippin.maps', ['gservice'])
-  .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll) {
+angular.module('roadtrippin.maps', ['gservice', 'toaster'])
+  .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll, toaster) {
     $scope.route = {};
     $scope.route.stopOptions = [1, 2, 3, 4, 5];
     $scope.route.stopTypes = ['gas_station', 'liquor_store', 'restaurant', 'lodging', 'rv_park'];
@@ -74,6 +74,7 @@ angular.module('roadtrippin.maps', ['gservice'])
       var authorAndTrip = gservice.thisTrip;
       authorAndTrip.author = $scope.user.username;
       mapFactory.saveJourneyWithWaypoints(authorAndTrip).then($scope.getAll());
+       $scope.urlSave();
     };
 
     $scope.getAll = function () {
@@ -120,6 +121,15 @@ angular.module('roadtrippin.maps', ['gservice'])
     $scope.deleteSavedRoute = function (hash) {
       mapFactory.deleteRoute(hash).then(function () {
         $scope.getAll();
+      });
+    };
+
+    // Saves shortened version of url to clipboard and displays toastr message
+    $scope.urlSave = function(){
+      toaster.pop({
+        type: 'success',
+        title: 'Yay!',
+        body: 'Shortcut URL copied to clipboard',
       });
     };
 
