@@ -117,8 +117,8 @@ angular.module('roadtrippin.maps', ['gservice'])
     };
     
     $scope.deleteSavedRoute = function (hash) {
-      mapFactory.deleteRoute(hash).then(function (results) {
-        console.log(results);
+      mapFactory.deleteRoute(hash).then(function () {
+        $scope.getAll();
       });
     };
 

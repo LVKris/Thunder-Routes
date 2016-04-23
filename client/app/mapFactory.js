@@ -35,7 +35,7 @@ angular.module('roadtrippin.mapsFactory', [])
       $http({
         method: 'POST',
         url: '/deleteJourney',
-        data: hash
+        data: JSON.stringify({hash: hash})
       }).then(function (res) {
         deferred.resolve (res);
       }).catch(function (err) {
@@ -43,7 +43,7 @@ angular.module('roadtrippin.mapsFactory', [])
       });
       return deferred.promise;
     };
-
+    
     var getUserInfo = function() {
       var deferred = $q.defer();
       $http({

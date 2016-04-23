@@ -54,5 +54,20 @@ module.exports = {
       .catch(function(error) {
         next(error);
       });
+  },
+  
+  deleteJourney: function (req, res, next) {
+    Journey.findOneAndRemove({hash: req.body.hash})
+      .then(function (data) {
+        res.status(200).send(data);
+      })
+      .catch(function(error) {
+        next(error);
+      });
   }
 };
+
+
+
+
+

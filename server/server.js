@@ -9,7 +9,7 @@ var app = express();
 
 app.use(express.static(__dirname + '/../client'));
 app.use(parser.json());
-// Console logs all reqests to the server 
+// Console logs all requests to the server 
 app.use(morgan('dev'));
 
 
@@ -25,6 +25,7 @@ db.once('open', function() {
 
 app.post('/saveJourney', journeyController.saveJourney);
 app.get('/saveJourney', journeyController.getAll);
+app.post('/deleteJourney', journeyController.deleteJourney);
 app.get('/user', userController.checkAuth);
 app.post('/signin', userController.signin);
 app.post('/signup', userController.signup);
