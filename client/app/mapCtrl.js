@@ -2,10 +2,12 @@ angular.module('roadtrippin.maps', ['gservice'])
   .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll) {
     $scope.route = {};
     $scope.route.stopOptions = [1, 2, 3, 4, 5];
-    $scope.route.stopTypes = ['liquor_store', 'restaurant', 'lodging'];
+    $scope.route.stopTypes = ['gas_station', 'liquor_store', 'restaurant', 'lodging', 'rv_park'];
     $scope.places = [];
     $scope.savedRoutes = [];
     $scope.user = {};
+    $scope.distance = '';
+    $scope.time = '';
 
     var readCredentials = function () {
       mapFactory.getUserInfo()
@@ -40,9 +42,13 @@ angular.module('roadtrippin.maps', ['gservice'])
     //this is a call to our Google maps API factory for directions
     $scope.getRoute = function() {
       gservice.calcRoute($scope.route.start, $scope.route.end, $scope.route.numStops, $scope.route.typeStops)
-        .then(function(places) { splitLocations(places); });
-        $scope.startInput = '';
-        $scope.endInput = '';
+        .then(function(places) { 
+          $scope.distance = gservice.thisTrip.distanceText;
+          $scope.time = gservice.thisTrip.timeText;
+          splitLocations(places); 
+        });
+      $scope.startInput = '';
+      $scope.endInput = '';
     };
 
     var splitLocations = function (places) {
