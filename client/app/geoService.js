@@ -13,13 +13,15 @@ angular.module('gservice', [])
       //Store current trip data so we can access it for saving.
       //Properties will be added to this object every time a route is calculated.
       googleMapService.thisTrip = {};
-      //Attempt to get current location, assuming user is driving
-      googleMapService.getCurrentLocation = function(){
-        //Get current location from browser
-        navigator.geolocation.getCurrentPosition(function(position){
-          //Showing the position for now
-          console.log(position.coords.latitude,position.coords.longitude);
-        });
+
+      // //Attempt to get current location, assuming user is driving
+      // googleMapService.getCurrentLocation = function(){
+      //   //Get current location from browser
+      //   navigator.geolocation.getCurrentPosition(function(position){
+      //     //Showing the position for now
+      //     return position.coords.latitude;
+      //   });
+
         // if(navigator.geolocation) {
         //   browserSupportFlag = true;
         //   navigator.geolocation.getCurrentPosition(function(position) {
@@ -30,7 +32,7 @@ angular.module('gservice', [])
         //   });
         // }
 
-      }
+      //}
 
       //initialize the map if no other instructions are given
       var initialize = function () {
