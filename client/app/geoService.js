@@ -13,20 +13,7 @@ angular.module('gservice', [])
       //Store current trip data so we can access it for saving.
       //Properties will be added to this object every time a route is calculated.
       googleMapService.thisTrip = {};
-
       //initialize the map if no other instructions are given
-      // var getCurrentLocation = function(){
-      //   if(navigator.geolocation) {
-      //     browserSupportFlag = true;
-      //     navigator.geolocation.getCurrentPosition(function(position) {
-      //       initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      //       console.log(initialLocation);
-      //     }, function() {
-      //       handleNoGeolocation(browserSupportFlag);
-      //     });
-      //   }
-
-      // }
       var initialize = function () {
         directionsDisplay = new google.maps.DirectionsRenderer();
         var SF = new google.maps.LatLng(37.7749, -122.4194);

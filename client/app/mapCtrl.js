@@ -51,6 +51,17 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster'])
       $scope.startInput = '';
       $scope.endInput = '';
     };
+    //Call geolocation service from browser
+    $scope.getCurrentLocation = function(place) {
+      var dir= 'https://www.google.com/maps/dir/';
+      //Get current location from browser
+      navigator.geolocation.getCurrentPosition(function(position){
+        //Showing the position for now
+        dir += "'" + position.coords.latitude + ',' + position.coords.longitude + "'/'"+place.lat+','+place.long+"'";
+        var win = window.open(dir, '_blank');
+        win.focus();
+      });
+    }
 
     var splitLocations = function (places) {
       $scope.places = [];
