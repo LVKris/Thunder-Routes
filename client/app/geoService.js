@@ -13,20 +13,26 @@ angular.module('gservice', [])
       //Store current trip data so we can access it for saving.
       //Properties will be added to this object every time a route is calculated.
       googleMapService.thisTrip = {};
+      //Attempt to get current location, assuming user is driving
+      googleMapService.getCurrentLocation = function(){
+        //Get current location from browser
+        navigator.geolocation.getCurrentPosition(function(position){
+          //Showing the position for now
+          console.log(position.coords.latitude,position.coords.longitude);
+        });
+        // if(navigator.geolocation) {
+        //   browserSupportFlag = true;
+        //   navigator.geolocation.getCurrentPosition(function(position) {
+        //     initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        //     console.log(initialLocation);
+        //   }, function() {
+        //     handleNoGeolocation(browserSupportFlag);
+        //   });
+        // }
+
+      }
 
       //initialize the map if no other instructions are given
-      // var getCurrentLocation = function(){
-      //   if(navigator.geolocation) {
-      //     browserSupportFlag = true;
-      //     navigator.geolocation.getCurrentPosition(function(position) {
-      //       initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      //       console.log(initialLocation);
-      //     }, function() {
-      //       handleNoGeolocation(browserSupportFlag);
-      //     });
-      //   }
-
-      // }
       var initialize = function () {
         directionsDisplay = new google.maps.DirectionsRenderer();
         var SF = new google.maps.LatLng(37.7749, -122.4194);

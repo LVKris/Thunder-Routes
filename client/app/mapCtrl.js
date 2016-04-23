@@ -51,6 +51,11 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster'])
       $scope.startInput = '';
       $scope.endInput = '';
     };
+    //Call geolocation service from browser
+    $scope.getCurrentLocation = function() {
+      
+      return gservice.getCurrentLocation();
+    }
 
     var splitLocations = function (places) {
       $scope.places = [];
