@@ -2,9 +2,7 @@ angular.module('roadtrippin.maps', ['gservice'])
   .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll) {
     $scope.route = {};
     $scope.route.stopOptions = [1, 2, 3, 4, 5];
-<<<<<<< 6fdf546a51c3f6aa988e6f784f200b4b51213d7f
     $scope.route.stopTypes = ['gas_station', 'liquor_store', 'restaurant', 'lodging', 'rv_park'];
->>>>>>> Add delete routing hooks in mapCtrl and mapFactory
     $scope.places = [];
     $scope.savedRoutes = [];
     $scope.user = {};
