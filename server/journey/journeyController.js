@@ -10,6 +10,10 @@ module.exports = {
     var end = req.body.end;
     var author = req.body.author;
     var waypoints = [];
+    var tripTime = req.body.timeText;
+    var tripDistance = req.body.distanceText;
+    var tripTimeValue = req.body.timeValue;
+    var tripDistValue = req.body.distanceValue;
 
     for (var i = 0; i < req.body.waypoints.length; i++) {
       waypoints[req.body.waypoints[i].position] = [req.body.waypoints[i].name, req.body.waypoints[i].location];
@@ -25,7 +29,11 @@ module.exports = {
             startPoint: start,
             endPoint: end,
             wayPoints: waypoints,
-            author: author
+            author: author,
+            tripTime: tripTime,
+            tripDistance: tripDistance,
+            tripTimeValue: tripTimeValue,
+            tripDistValue: tripDistValue,
           });
         } else {
           next(new Error('Journey already exist!'));
