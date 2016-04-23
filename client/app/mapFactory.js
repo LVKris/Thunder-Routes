@@ -29,7 +29,21 @@ angular.module('roadtrippin.mapsFactory', [])
       });
       return deferred.promise;
     };
-
+    
+    var deleteRoute = function(hash) {
+      var deferred = $q.defer();
+      $http({
+        method: 'POST',
+        url: '/deleteJourney',
+        data: JSON.stringify({hash: hash})
+      }).then(function (res) {
+        deferred.resolve (res);
+      }).catch(function (err) {
+        deferred.reject (err);
+      });
+      return deferred.promise;
+    };
+    
     var getUserInfo = function() {
       var deferred = $q.defer();
       $http({
@@ -51,6 +65,7 @@ angular.module('roadtrippin.mapsFactory', [])
     return {
       saveJourneyWithWaypoints: saveJourneyWithWaypoints,
       getAllRoutes: getAllRoutes,
+      deleteRoute: deleteRoute,
       signout: signout,
       getUserInfo: getUserInfo
     };
