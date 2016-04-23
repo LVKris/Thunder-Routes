@@ -87,6 +87,8 @@ angular.module('roadtrippin.maps', ['gservice'])
       $anchorScroll();
       for (var i = 0; i < $scope.savedRoutes.length; i++) {
         if ($scope.savedRoutes[i].hash === hash) {
+          $scope.distance = $scope.savedRoutes[i].tripDistance;
+          $scope.time = $scope.savedRoutes[i].tripTime;
           //split up waypoints array into names ans locations. Even index ==== name, odd index === location
           $scope.savedRoutes[i].stopLocations = [];
           $scope.savedRoutes[i].stopNames = [];

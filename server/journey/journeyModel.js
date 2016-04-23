@@ -17,7 +17,19 @@ var JourneySchema = new mongoose.Schema({
   },
   author: {
     type: String
-  }
+  }, 
+  tripTime: {
+    type: String
+  },
+  tripDistance: {
+    type: String
+  },
+  tripTimeValue: {
+    type: Number
+  },
+  tripDistValue: {
+    type: Number
+  },
 });
 
 var createSha = function (points) {
