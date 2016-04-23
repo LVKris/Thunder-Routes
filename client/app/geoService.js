@@ -15,6 +15,18 @@ angular.module('gservice', [])
       googleMapService.thisTrip = {};
 
       //initialize the map if no other instructions are given
+      // var getCurrentLocation = function(){
+      //   if(navigator.geolocation) {
+      //     browserSupportFlag = true;
+      //     navigator.geolocation.getCurrentPosition(function(position) {
+      //       initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      //       console.log(initialLocation);
+      //     }, function() {
+      //       handleNoGeolocation(browserSupportFlag);
+      //     });
+      //   }
+
+      // }
       var initialize = function () {
         directionsDisplay = new google.maps.DirectionsRenderer();
         var SF = new google.maps.LatLng(37.7749, -122.4194);
@@ -153,12 +165,25 @@ angular.module('gservice', [])
         var doneSoFar = 0; //counter for async for loop
         for (var i = 0; i < placeRequests.length; i++) {
           var placesService = new google.maps.places.PlacesService(document.getElementById('invisible'), placeRequests[i].location);
+
+
+
           placesService.textSearch(placeRequests[i], function (res, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
               var place = {
                 location: res[0].formatted_address,
-                name: res[0].name
+                name: res[0].name,
+                placeID: res[0].place_id,
+                lat: res[0].geometry.location.lat(),
+                long: res[0].geometry.location.lng(),
               };
+              // getCurrentLocation();
+              placesService.getDetails({placeId:res[0].place_id}, function(res, status){ 
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    place.url = res.url;
+                    place.phoneNumber = res.formatted_phone_number;
+                } 
+              })
               placesToStop.push(place);
               doneSoFar++;
               if (doneSoFar === placeRequests.length) {
