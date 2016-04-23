@@ -44,6 +44,8 @@
   <!-- Stops -->
   <h3 class="col-xs-4 infoHeader"><i class="fa fa-caret-right fa-rotate-90" aria-hidden="true"></i>Your Stops</h3>
   <div class="col-xs-4 info-content pre-scrollable">
+    <div class="trip-info" ng-model="distance">Trip distance: {{distance}}</div> 
+    <div class="trip-info" ng-model="time">Trip Time:{{time}}</div>
     <div class="info stop-info" ng-repeat="place in places | orderBy:'position'">
       <p class="stop-name">{{getLetter(place.position)}}. {{place.name}}</p>
       <p class="stop-address">{{place.location[0]}}</p>

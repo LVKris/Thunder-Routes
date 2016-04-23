@@ -42,6 +42,21 @@ angular.module('gservice', [])
       //calculate a route (promisified function)
       googleMapService.calcRoute = function (start, end, numStops, typeStop) {
         var deferred = $q.defer();
+        // calls to google distance service to get route distance and time
+        var service = new google.maps.DistanceMatrixService();
+            var request = {
+              origins: [start],
+              destinations: [end],
+              travelMode: google.maps.TravelMode.DRIVING,
+              unitSystem: google.maps.UnitSystem.IMPERIAL
+            };
+          service.getDistanceMatrix(request, function(response, status){
+            // save returned data to the thisTrip object for access in controller
+              googleMapService.thisTrip.distanceText = response.rows[0].elements[0].distance.text
+              googleMapService.thisTrip.distanceValue = response.rows[0].elements[0].distance.value
+              googleMapService.thisTrip.timeText = response.rows[0].elements[0].duration.text
+              googleMapService.thisTrip.timeValue = response.rows[0].elements[0].duration.value   
+            });
         var request = {
           origin: start,
           destination: end,
