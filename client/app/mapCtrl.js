@@ -41,7 +41,8 @@ angular.module('roadtrippin.maps', ['gservice'])
 
     //this is a call to our Google maps API factory for directions
     $scope.getRoute = function() {
-      gservice.calcRoute($scope.route.start, $scope.route.end, $scope.route.numStops, $scope.route.typeStops)
+      var numbStops = parseInt($scope.route.numStops);
+      gservice.calcRoute($scope.route.start, $scope.route.end, numbStops, $scope.route.typeStops)
         .then(function(places) { 
           $scope.distance = gservice.thisTrip.distanceText;
           $scope.time = gservice.thisTrip.timeText;
