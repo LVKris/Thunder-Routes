@@ -2,12 +2,19 @@
   box-sizing: border-box;
 }
 
+@font-face {
+ font-family: 'MyWebFont';
+ src: url('thundercats-webfont.ttf'); 
+}
+
 body {
   font-family: "Roboto", Arial, Helvetica;
+  background-color: rgb(218,239,229);
 }
 
 #funcNav {
-  background-color: #003136;
+  background-image: url("http://imgs.abduzeedo.com/files/paul0v2/surface-patterns/pattern-03.jpg");
+  /*background-color: #003136;*/
   width: 100%;
   max-width: 100%;
   height: 120px;
@@ -18,10 +25,10 @@ body {
 
 h1 {
   text-align: center;
-  font: 3em "Fugaz One";
-  color: white;
+  font: 5em "MyWebFont";
+  color: black;
   position: relative;
-  bottom: 25%;
+  bottom: 60%;
 }
 
 .title {
@@ -122,8 +129,10 @@ i {
 }
 
 h3 {
- font: 1.5em "Fugaz One";
- color: #FFF;
+ font: 2em "Roboto";
+ text-shadow: 2px 2px 2px #B8B8B8;
+ font-weight: "bold";
+ color: black;
  padding: 10px 0;
  background-color: #003136;
 }
@@ -140,6 +149,7 @@ h3 {
 }
 
 .infoHeader {
+  background-image: url("http://imgs.abduzeedo.com/files/paul0v2/surface-patterns/pattern-03.jpg");
   margin-top: 0;
 }
 
