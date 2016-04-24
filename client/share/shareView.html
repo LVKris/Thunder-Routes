@@ -1,3 +1,18 @@
+<!-- Header -->
+<header class="col-xs-12" id="funcNav">
+  <a id="#top"></a>
+  <div class="dropdown col-xs-offset-10 col-xs-2">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="acct"></span>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><p class="text-center">Signed in: {{user.username}}</p></li>
+      <li><a href="#" id="signout" ng-click="signout()">Sign Out</a></li>
+    </ul>
+  </div>
+  <h1 class="title col-xs-10">Thunder Routes</h1>
+</header>
 <!-- Container for map and stops -->
 <div class="row">
   <!-- Map -->
