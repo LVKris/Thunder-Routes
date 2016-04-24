@@ -77,9 +77,10 @@
     </div>
     <div class="col-xs-4 centered">
       <button class="saved-route-link btn" ng-click="viewSavedRoute(route.hash)">View this Route</button>
-      <button class="saved-route-link btn" ngclipboard data-clipboard-target="#id{{$index}}">Clipboard</button>
+      <button class="saved-route-link btn" ngclipboard ngclipboard-success="urlSave(e);" 
+                                                              data-clipboard-target="#id{{$index}}">Clipboard</button>
       <button class="saved-route-link btn" ng-click="deleteSavedRoute(route.hash)">Delete</button>
-      <input class="hide-input" id="id{{$index}}" value={{route.hash}}>
+      <input class="hide-input" id="id{{$index}}" value={{shareUri.share}}{{route.hash}}>
     </div>
   </div>
 </div>
