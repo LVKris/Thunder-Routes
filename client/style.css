@@ -199,3 +199,10 @@ h3 {
 .dont-show {
   visibility: hidden;
 }
+
+.hide-input {
+  /*display: none;*/
+  opacity: 0;
+  margin: 0px;
+  padding: 0px;
+}

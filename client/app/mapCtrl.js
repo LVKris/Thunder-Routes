@@ -1,4 +1,4 @@
-angular.module('roadtrippin.maps', ['gservice', 'toaster'])
+angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
   .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll, toaster) {
     $scope.route = {};
     $scope.route.stopOptions = [1, 2, 3, 4, 5];
@@ -8,6 +8,7 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster'])
     $scope.user = {};
     $scope.distance = '';
     $scope.time = '';
+    $scope.
 
     var readCredentials = function () {
       mapFactory.getUserInfo()
@@ -91,6 +92,7 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster'])
     $scope.getAll = function () {
       mapFactory.getAllRoutes().then(function (results) {
         $scope.savedRoutes = results;
+        console.log($scope.savedRoutes);
       });
     };
 
