@@ -25,7 +25,7 @@ module.exports = {
     findJourney({wayPoints: waypoints})
       .then(function (waypoint) {
         if (!waypoint) {
-          return createJourney({
+          createJourney({
             startPoint: start,
             endPoint: end,
             wayPoints: waypoints,
@@ -35,6 +35,7 @@ module.exports = {
             tripTimeValue: tripTimeValue,
             tripDistValue: tripDistValue,
           });
+          res.status(201).send();
         } else {
           next(new Error('Journey already exist!'));
         }
