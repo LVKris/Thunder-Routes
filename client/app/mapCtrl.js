@@ -1,4 +1,4 @@
-angular.module('roadtrippin.maps', ['gservice', 'toaster'])
+angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
   .controller('mapController', function($scope, mapFactory, gservice, $location, $anchorScroll, toaster) {
     $scope.route = {};
     $scope.route.stopOptions = [1, 2, 3, 4, 5];
@@ -8,6 +8,13 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster'])
     $scope.user = {};
     $scope.distance = '';
     $scope.time = '';
+    // get full uri
+    $scope.shareUri = $location.absUrl();
+    // strip out path and create fully qualified path that
+    // only needs the hash added for sharing link
+    $scope.shareUri = {
+      share: $scope.shareUri.replace($location.url(), '/share/')
+    };
 
     var readCredentials = function () {
       mapFactory.getUserInfo()
@@ -136,11 +143,11 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster'])
     };
 
     // Saves shortened version of url to clipboard and displays toastr message
-    $scope.urlSave = function(){
+    $scope.urlSave = (ngClipObject) => {
       toaster.pop({
         type: 'success',
-        title: 'Yay!',
-        body: 'Shortcut URL copied to clipboard',
+        title: 'RAA!',
+        body: `Shortcut ${ngClipObject.text} copied to clipboard`,
       });
     };
 

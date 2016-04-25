@@ -28,7 +28,7 @@ h1 {
   font: 5em "MyWebFont";
   color: black;
   position: relative;
-  bottom: 60%;
+  bottom: 50%;
 }
 
 .title {
@@ -198,4 +198,15 @@ h3 {
 
 .dont-show {
   visibility: hidden;
+}
+
+.hide-input {
+  /* used for clipboard input field for share link      */
+  /* these 2 don't work, only found opacity would allow */
+  /* copy operation to proceed                          */
+  /* display: none;                                     */
+  /* visibility: hidden;                                */
+  opacity: 0;
+  margin: 0px;
+  padding: 0px;
 }
