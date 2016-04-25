@@ -77,6 +77,10 @@ angular.module('shareroute', ['gservice'])
     gservice.render($scope.savedRoutes[0].startPoint, $scope.savedRoutes[0].endPoint, places)
     .then(function (places) { splitLocations(places); });    
   };
+  
+  $scope.getLetter = function (i) {
+    return String.fromCharCode(i + 65);
+  };
 
   $scope.getAll();
   

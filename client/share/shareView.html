@@ -37,7 +37,7 @@
 
     <div class="info stop-info" ng-repeat="place in places | orderBy:'position'">
       <!-- <p class="stop-name">{{getLetter(place.position)}}. {{place.name}}</p> -->
-      <p class="stop-name">{{$index + 1}}. {{place.name}}</p>
+      <p class="stop-name">{{getLetter($index)}}. {{place.name}}</p>
       <p class="stop-address">{{place.location[0]}}</p>
       <p class="stop-address">{{place.location[1]}}, {{place.location[2]}}</p>
       <p class="stop-address">{{place.location[3]}}</p>
