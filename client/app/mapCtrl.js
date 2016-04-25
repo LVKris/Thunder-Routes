@@ -91,6 +91,7 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
     $scope.saveRoute = function () {
       var authorAndTrip = gservice.thisTrip;
       authorAndTrip.author = $scope.user.username;
+<<<<<<< 98d6f3d546762aac6809319e575132dd9fafbaf9
       if (!authorAndTrip.waypoints){
         toaster.pop('error', "Uh Oh!", "There is no trip to save!");
         return
