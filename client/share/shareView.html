@@ -13,7 +13,16 @@
  -->  </div>
   <h1 class="title col-xs-10">Thunder Routes</h1>
 </header>
+<div class="col-xs-12">
 <div class="share-a-route">Share A Route</div>
+<div class="route-start-stop">
+  <span>From: </span>
+  <span class="bold-view">{{startLoc}}</span>
+  <span> To: </span>
+  <span class="bold-view">{{stopLoc}}</span>
+</div>
+</div>
+
 <!-- Container for map and stops -->
 <div class="row">
   <!-- Map -->
@@ -23,6 +32,9 @@
   <!-- Stops -->
   <h3 class="col-xs-4 infoHeader"><i class="fa" aria-hidden="true"></i>Your Stops</h3>
   <div class="col-xs-4 info-content pre-scrollable">
+    <div class="trip-info" ng-model="distance">Trip distance: {{distance}}</div> 
+    <div class="trip-info" ng-model="time">Trip time: {{time}}</div>
+
     <div class="info stop-info" ng-repeat="place in places | orderBy:'position'">
       <!-- <p class="stop-name">{{getLetter(place.position)}}. {{place.name}}</p> -->
       <p class="stop-name">{{$index + 1}}. {{place.name}}</p>

@@ -5,7 +5,12 @@ angular.module('shareroute', ['gservice'])
   $scope.routeNumber = $stateParams.routeid;
   $scope.savedRoutes = []; 
   $scope.places = [];
-
+  // Add to include total route distance & time to page display
+  $scope.distance = '';
+  $scope.time = '';
+  // Add to include start & stop to page display
+  $scope.startLoc = '';
+  $scope.stopLoc = '';
 
   var splitLocations = function (places) {
     $scope.places = [];
@@ -42,30 +47,35 @@ angular.module('shareroute', ['gservice'])
 
   $scope.viewSavedRoute = function (hash) {
     $anchorScroll();
-        $scope.savedRoutes[0].stopLocations = [];
-        $scope.savedRoutes[0].stopNames = [];
-    console.log($scope.savedRoutes);
-        for (var j = 0; j < $scope.savedRoutes[0].wayPoints.length; j++) {
-          if (j % 2 === 0) {
-            $scope.savedRoutes[0].stopNames.push($scope.savedRoutes[0].wayPoints[j]);
-          } else {
-            $scope.savedRoutes[0].stopLocations.push($scope.savedRoutes[0].wayPoints[j]);
-          }
-        }
-        //set $scope.places to saved stop data so stop data will display on page
-        var places = [];
-        for (var k = 0; k < $scope.savedRoutes[0].stopNames.length; k++) {
-          var location = $scope.savedRoutes[0].stopLocations[k];
-          var place = {
-            name: $scope.savedRoutes[0].stopNames[k],
-            location: location,
-            position: k
-          };
-          places.push(place);
-        }
-        //add stop locations to stops array, render stops to map
-        gservice.render($scope.savedRoutes[0].startPoint, $scope.savedRoutes[0].endPoint, places)
-        .then(function (places) { splitLocations(places); });    
+    $scope.savedRoutes[0].stopLocations = [];
+    $scope.savedRoutes[0].stopNames = [];
+    // console.log($scope.savedRoutes);
+    $scope.distance = $scope.savedRoutes[0].tripDistance;
+    $scope.time = $scope.savedRoutes[0].tripTime;
+    $scope.startLoc = $scope.savedRoutes[0].startPoint;
+    $scope.stopLoc = $scope.savedRoutes[0].endPoint;
+
+    for (var j = 0; j < $scope.savedRoutes[0].wayPoints.length; j++) {
+      if (j % 2 === 0) {
+        $scope.savedRoutes[0].stopNames.push($scope.savedRoutes[0].wayPoints[j]);
+      } else {
+        $scope.savedRoutes[0].stopLocations.push($scope.savedRoutes[0].wayPoints[j]);
+      }
+    }
+    //set $scope.places to saved stop data so stop data will display on page
+    var places = [];
+    for (var k = 0; k < $scope.savedRoutes[0].stopNames.length; k++) {
+      var location = $scope.savedRoutes[0].stopLocations[k];
+      var place = {
+        name: $scope.savedRoutes[0].stopNames[k],
+        location: location,
+        position: k
+      };
+      places.push(place);
+    }
+    //add stop locations to stops array, render stops to map
+    gservice.render($scope.savedRoutes[0].startPoint, $scope.savedRoutes[0].endPoint, places)
+    .then(function (places) { splitLocations(places); });    
   };
 
   $scope.getAll();
@@ -76,7 +86,7 @@ angular.module('shareroute', ['gservice'])
 .factory('ShareFactory', function ($http, $q) {
 
   var getRoute = function(routeNum) {
-      console.log(routeNum);
+      // console.log(routeNum);
       var routeObj = { hash: routeNum };
       var deferred = $q.defer();
       $http({

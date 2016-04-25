@@ -216,7 +216,7 @@ h3 {
   font: 3em "MyWebFont";
   color: black;
   margin-top: 0px;
-  margin-bottom: 16px;
+  margin-bottom: 0px;
   margin-right: 0px;
   margin-left: 50px;
   /*position: relative;*/
@@ -224,5 +224,16 @@ h3 {
 }
 
 .override {
-  opacity: 0;
+  /*opacity: 0;*/
+  visibility: hidden;
+}
+
+.route-start-stop {
+  float: none;
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+.bold-view {
+  font-weight: bold;
 }
