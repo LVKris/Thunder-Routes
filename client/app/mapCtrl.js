@@ -91,8 +91,17 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
     $scope.saveRoute = function () {
       var authorAndTrip = gservice.thisTrip;
       authorAndTrip.author = $scope.user.username;
-      mapFactory.saveJourneyWithWaypoints(authorAndTrip).then($scope.getAll());
-       $scope.urlSave();
+      if (!authorAndTrip.waypoints){
+        toaster.pop('error', "Uh Oh!", "There is no trip to save!");
+        return
+      }
+      mapFactory.saveJourneyWithWaypoints(authorAndTrip).then(function (results) {
+        console.log('success')
+        $scope.getAll()
+        //$scope.urlSave();
+      }, function (results) {
+        toaster.pop('error', "Uh Oh!", "This trip already exists!");
+      });
     };
 
     $scope.getAll = function () {

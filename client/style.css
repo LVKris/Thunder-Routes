@@ -25,14 +25,14 @@ body {
 
 h1 {
   text-align: center;
-  font: 5em "MyWebFont";
+  font: 7em "MyWebFont";
   color: black;
   position: relative;
-  bottom: 50%;
+  bottom: 86%;
 }
 
 .title {
-  width: 100%;
+  width: 80%;
 }
 
 .initial-form {
@@ -62,7 +62,7 @@ h1 {
 .caret {
   font-family: Helvetica;
   font-weight: 200;
-  color: white;
+  color: black;
 }
 
 .dropdown-menu {
