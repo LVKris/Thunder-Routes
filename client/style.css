@@ -48,7 +48,7 @@ h1 {
 }
 
 .dropdown-toggle {
-  background: rgba(0,0,0,0);
+  /*background: rgba(0,0,0,0);*/
   color: white;
   outline: none;
   border: none;
@@ -209,4 +209,20 @@ h3 {
   opacity: 0;
   margin: 0px;
   padding: 0px;
+}
+
+.share-a-route {
+  /*text-align: center;*/
+  font: 3em "MyWebFont";
+  color: black;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  margin-right: 0px;
+  margin-left: 50px;
+  /*position: relative;*/
+  /*bottom: 86%;*/
+}
+
+.override {
+  opacity: 0;
 }

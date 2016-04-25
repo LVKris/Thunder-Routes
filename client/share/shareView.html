@@ -2,17 +2,18 @@
 <header class="col-xs-12" id="funcNav">
   <a id="#top"></a>
   <div class="dropdown col-xs-offset-10 col-xs-2">
-    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <button class="override btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       <span class="acct"></span>
       <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+<!--     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
       <li><p class="text-center">Signed in: {{user.username}}</p></li>
       <li><a href="#" id="signout" ng-click="signout()">Sign Out</a></li>
     </ul>
-  </div>
+ -->  </div>
   <h1 class="title col-xs-10">Thunder Routes</h1>
 </header>
+<div class="share-a-route">Share A Route</div>
 <!-- Container for map and stops -->
 <div class="row">
   <!-- Map -->
@@ -20,7 +21,7 @@
     <div id="map"></div>
   </div>
   <!-- Stops -->
-  <h3 class="col-xs-4 infoHeader"><i class="fa fa-caret-right fa-rotate-90" aria-hidden="true"></i>Your Stops</h3>
+  <h3 class="col-xs-4 infoHeader"><i class="fa" aria-hidden="true"></i>Your Stops</h3>
   <div class="col-xs-4 info-content pre-scrollable">
     <div class="info stop-info" ng-repeat="place in places | orderBy:'position'">
       <!-- <p class="stop-name">{{getLetter(place.position)}}. {{place.name}}</p> -->
@@ -28,6 +29,8 @@
       <p class="stop-address">{{place.location[0]}}</p>
       <p class="stop-address">{{place.location[1]}}, {{place.location[2]}}</p>
       <p class="stop-address">{{place.location[3]}}</p>
+      <button class="btn" ng-click="getCurrentLocation(place)">Get directions</button>
+
     </div>
   </div>
 </div>

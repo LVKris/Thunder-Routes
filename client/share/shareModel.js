@@ -27,6 +27,18 @@ angular.module('shareroute', ['gservice'])
       $scope.viewSavedRoute(results[0].hash);
     });
   };
+  
+  //Call geolocation service from browser
+  $scope.getCurrentLocation = function(place) {
+    var dir= 'https://www.google.com/maps/dir/';
+    //Get current location from browser
+    navigator.geolocation.getCurrentPosition(function(position){
+      //Showing the position for now
+      dir += "'" + position.coords.latitude + ',' + position.coords.longitude + "'/'"+place.lat+','+place.long+"'";
+      var win = window.open(dir, '_blank');
+      win.focus();
+    });
+  }
 
   $scope.viewSavedRoute = function (hash) {
     $anchorScroll();
