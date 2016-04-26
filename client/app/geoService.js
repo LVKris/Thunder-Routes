@@ -95,7 +95,8 @@ angular.module('gservice', [])
             stopover: true
           });
         });
-        var wyptRequest = { //format the request for Google
+        //format the request for Google
+        var wyptRequest = { 
           origin: start,
           destination: end,
           waypoints: stops,
@@ -125,7 +126,8 @@ angular.module('gservice', [])
           points.push(stopDistance + (stopDistance * i));
         }
         var waypoints = [];
-        points.forEach(function (index) { //retrieve lat/lng data for each wpt
+        //retrieve lat/lng data for each wpt
+        points.forEach(function (index) { 
           var waypoint = {
             lat: waypointArray[index].lat(),
             lng: waypointArray[index].lng()

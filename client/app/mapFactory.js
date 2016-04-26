@@ -17,6 +17,7 @@ angular.module('roadtrippin.mapsFactory', [])
       return deferred.promise;
     };
 
+    // Retrieve all saved routes
     var getAllRoutes = function() {
       var deferred = $q.defer();
       $http({
@@ -30,6 +31,7 @@ angular.module('roadtrippin.mapsFactory', [])
       return deferred.promise;
     };
     
+    // Delete route, hash passed from mapCtrl
     var deleteRoute = function(hash) {
       var deferred = $q.defer();
       $http({
@@ -44,6 +46,7 @@ angular.module('roadtrippin.mapsFactory', [])
       return deferred.promise;
     };
     
+    // Retrieve user's info
     var getUserInfo = function() {
       var deferred = $q.defer();
       $http({
@@ -57,6 +60,7 @@ angular.module('roadtrippin.mapsFactory', [])
       return deferred.promise;
     };
 
+    // sign user out
     var signout = function() {
       $window.localStorage.removeItem('com.roadtrippin');
       $location.path('/signin');

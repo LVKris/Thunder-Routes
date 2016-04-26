@@ -12,7 +12,7 @@ app.use(parser.json());
 // Console logs all requests to the server 
 app.use(morgan('dev'));
 
-
+// Connect to Mongo DB
 var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/roadtrippin';
 mongoose.connect(mongoUri);
 
@@ -23,6 +23,7 @@ db.once('open', function() {
 });
   
 
+// Common routes
 app.post('/saveJourney', journeyController.saveJourney);
 app.get('/saveJourney', journeyController.getAll);
 app.post('/deleteJourney', journeyController.deleteJourney);

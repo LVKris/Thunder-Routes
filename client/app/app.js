@@ -8,6 +8,7 @@ angular.module('roadtrippin', [
   'ui.router'
 ])
 
+// UI router definitions
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.otherwise('/homepage');
 
@@ -37,6 +38,7 @@ angular.module('roadtrippin', [
   $httpProvider.interceptors.push('AttachTokens');
 })
 
+// Setup JSON web token
 .factory('AttachTokens', function ($window) {
   var attach = {
     request: function (object) {

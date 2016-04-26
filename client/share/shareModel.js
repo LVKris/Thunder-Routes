@@ -45,6 +45,7 @@ angular.module('shareroute', ['gservice'])
     });
   }
 
+  // Retrieve saved route
   $scope.viewSavedRoute = function (hash) {
     $anchorScroll();
     $scope.savedRoutes[0].stopLocations = [];
@@ -78,6 +79,7 @@ angular.module('shareroute', ['gservice'])
     .then(function (places) { splitLocations(places); });    
   };
   
+  // Convert numeric stop counter to A,B,C...
   $scope.getLetter = function (i) {
     return String.fromCharCode(i + 65);
   };

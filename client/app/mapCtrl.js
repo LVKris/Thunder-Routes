@@ -16,6 +16,7 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
       share: $scope.shareUri.replace($location.url(), '/share/')
     };
 
+    // Get user information
     var readCredentials = function () {
       mapFactory.getUserInfo()
         .then(function (userInfo) {
@@ -24,11 +25,13 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
     };
     readCredentials();
 
+    // Autocomplete for beginning location
     var startAutoComplete = new google.maps.places.Autocomplete(
       document.getElementById('start'), {
       types: ['geocode']
     });
     
+    // Listener for autocomplete for beginning location
     startAutoComplete.addListener('place_changed', function() {
       $scope.route.start = startAutoComplete.getPlace().formatted_address;
         var place = startAutoComplete.getPlace();
@@ -36,11 +39,13 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
         // console.log($scope.route.start); 
     });
 
+    // Autocomplete for ending location
     var endAutoComplete = new google.maps.places.Autocomplete(
       document.getElementById('end'), {
       types: ['geocode']
     });
 
+    // Listener for autocomplete for ending location
     endAutoComplete.addListener('place_changed', function() {
       $scope.route.end = endAutoComplete.getPlace().formatted_address;
       $(this).val('') ;   
@@ -58,6 +63,7 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
       $scope.startInput = '';
       $scope.endInput = '';
     };
+    
     //Call geolocation service from browser
     $scope.getCurrentLocation = function(place) {
       var dir= 'https://www.google.com/maps/dir/';
@@ -78,16 +84,19 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
         //this apparently is needed for a clean copy...
         placesCopy.push(JSON.parse(JSON.stringify(places[i])));
       }
-      placesCopy.forEach(function (place) { //split address for easier formatting
+      //split address for easier formatting
+      placesCopy.forEach(function (place) {
         place.location = place.location.split(', ');
         $scope.places.push(place);
       });
     };
 
+    // Convert the numeric route count to A,B,C,D... for display purposes
     $scope.getLetter = function (i) {
       return String.fromCharCode(i + 66);
     };
 
+    // Save the new route
     $scope.saveRoute = function () {
       var authorAndTrip = gservice.thisTrip;
       authorAndTrip.author = $scope.user.username;
@@ -104,12 +113,14 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
       });
     };
 
+    // Load all saved routes
     $scope.getAll = function () {
       mapFactory.getAllRoutes().then(function (results) {
         $scope.savedRoutes = results;
       });
     };
 
+    // Load a saved route into the top full display section
     $scope.viewSavedRoute = function (hash) {
       $location.hash('top');
       $anchorScroll();
@@ -117,7 +128,7 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
         if ($scope.savedRoutes[i].hash === hash) {
           $scope.distance = $scope.savedRoutes[i].tripDistance;
           $scope.time = $scope.savedRoutes[i].tripTime;
-          //split up waypoints array into names ans locations. Even index ==== name, odd index === location
+          //split up waypoints array into names and locations. Even index ==== name, odd index === location
           $scope.savedRoutes[i].stopLocations = [];
           $scope.savedRoutes[i].stopNames = [];
           for (var j = 0; j < $scope.savedRoutes[i].wayPoints.length; j++) {
@@ -145,6 +156,7 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
       }
     };
     
+    // Delete selected saved route 
     $scope.deleteSavedRoute = function (hash) {
       mapFactory.deleteRoute(hash).then(function () {
         $scope.getAll();
@@ -159,9 +171,11 @@ angular.module('roadtrippin.maps', ['gservice', 'toaster', 'ngclipboard'])
         body: `Shortcut ${ngClipObject.text} copied to clipboard`,
       });
     };
-
+    
+    // Display saved routes upon initial entry
     $scope.getAll();
 
+    // Signout the user
     $scope.signout = function () {
       mapFactory.signout();
     };

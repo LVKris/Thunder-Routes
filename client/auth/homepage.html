@@ -77,9 +77,11 @@
     </div>
     <div class="col-xs-4 centered">
       <button class="saved-route-link btn" ng-click="viewSavedRoute(route.hash)">View this Route</button>
+      <!-- setup clipboard handling -->
       <button class="saved-route-link btn" ngclipboard ngclipboard-success="urlSave(e);" 
                                                               data-clipboard-target="#id{{$index}}">Clipboard</button>
       <button class="saved-route-link btn" ng-click="deleteSavedRoute(route.hash)">Delete</button>
+      <!-- clipboard data 'hidden' in this input tag -->
       <input class="hide-input" id="id{{$index}}" value={{shareUri.share}}{{route.hash}}>
     </div>
   </div>
@@ -90,6 +92,7 @@
 
 <!-- Very important invisible div for places search -->
 <div id="invisible"></div>
+<!-- this runs the caret toggle icon to show/hide route and saved routes -->
 <script>
 $(".infoHeader").on("click", function (e){
   $(this).parent().find(".info").toggle();

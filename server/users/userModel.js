@@ -17,6 +17,7 @@ var UserSchema = new mongoose.Schema({
   salt: String
 });
 
+// Verify password 
 UserSchema.methods.comparePasswords = function(attemptedPassword) {
   var savedPassword = this.password;
   return Q.Promise(function(resolve, reject) {
